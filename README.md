@@ -1,48 +1,64 @@
-# Laravel Assignment API (Scoped Models in Shared Table)
+# Laravel Assessment
 
-This project uses a single `objects` table to implement 4 logical models:
-- Franchise
-- Schedule
-- Parent
-- Student
+This is a basic Laravel API project based on the assessment instructions.
 
-## ✅ How It Works
+## ✅ What’s Included
 
-- All records are stored in the `objects` table
-- Global scopes are used to filter each model by `type_id`
-- Relationships:
-  - Student belongs to Parent
-  - Parent belongs to Franchise
-  - Schedule belongs to Franchise
+- 6 Models: `ObjectType`, `Object`, `Franchise`, `Schedule`, `Parent`, `Student`
+- Uses only 2 tables: `object_types` and `objects`
+- Relationships are handled using scopes and foreign keys
+- All models use the same `objects` table with a `type_id` filter
+- Seeders are provided to populate sample data
 
-## 🚀 How to Run
+## 📦 Requirements
 
-1. Clone the repo
+- PHP 8.1 or later
+- Composer
+- MySQL
+- Laravel CLI
+
+## ⚙️ Setup Instructions
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/m7mdisam/laravel-assessment.git
+   cd laravel-assessment
+   ```
+
 2. Install dependencies:
+   ```bash
+   composer install
+   ```
 
-```bash
-composer install
-```
+3. Copy `.env` file:
+   ```bash
+   cp .env.example .env
+   ```
 
-3. Copy `.env.example` to `.env`, and set up your database
-4. Run the setup:
+4. Set up your `.env` database section:
+   ```
+   DB_DATABASE=laravel_api
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-```bash
-php artisan key:generate
-php artisan migrate:fresh --seed
-php artisan serve
-```
+5. Generate app key:
+   ```bash
+   php artisan key:generate
+   ```
 
-## 📦 Available API Endpoints
+6. Run migrations and seeders:
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
 
-- `GET /api/franchises`
-- `POST /api/schedules`
-- `PUT /api/parents/{id}`
-- `DELETE /api/students/{id}`
+7. Start the server:
+   ```bash
+   php artisan serve
+   ```
 
-All endpoints return JSON responses only.
-
-## 📌 Notes
-
-- Uses only two tables: `object_types` and `objects`
-- No UI — pure API with structured controller logic
+8. Access API endpoints:
+   - `GET /api/franchises`
+   - `GET /api/schedules`
+   - `GET /api/parents`
+   - `GET /api/students`
